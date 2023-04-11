@@ -6,11 +6,31 @@
   </head>
   <body>
     <script>
+      const playerSelection = prompt("Rock, paper, or scissors?").toLowerCase();
+      const computerSelection = getComputerChoice();
+      //Randomly assign a value from Rock, Paper, Scissors to computerSelection//
       function getComputerChoice() {
-        let choiceArray = ["Rock", "Paper", "Scissors"];
+        let choiceArray = ["rock", "paper", "scissors"];
         return choiceArray[Math.floor(choiceArray.length * Math.random())];
       }
-      console.log(getComputerChoice());
+      //Assess if the player selection beats the computer using and if, elseif, else framework while being case-insensitive//
+      function playRound(playerSelection, computerSelection) {
+        if (playerSelection === computerSelection) {
+          console.log("It's a tie!");
+        } else if (
+          (playerSelection === "rock" && computerSelection === "scissors") ||
+          (playerSelection === "paper" && computerSelection === "rock") ||
+          (playerSelection === "scissors" && computerSelection === "paper")
+        ) {
+          console.log("Congratulations, you've won");
+        } else {
+          console.log("Sorry! You've Lost!");
+        }
+      }
+
+      playRound(playerSelection, computerSelection);
+
+      console.log(playerSelection, computerSelection);
     </script>
   </body>
 </html>
