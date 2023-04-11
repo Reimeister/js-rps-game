@@ -6,14 +6,21 @@
   </head>
   <body>
     <script>
+      /*Variables that will facilitate the data for each player. 
+			Player is prompted and input is converted to lowercase for case-insesitivity (array is in lowercase)
+			Computer uses function created to randomly generate choice*/
+
       const playerSelection = prompt("Rock, paper, or scissors?").toLowerCase();
       const computerSelection = getComputerChoice();
+
       //Randomly assign a value from Rock, Paper, Scissors to computerSelection//
+
       function getComputerChoice() {
         let choiceArray = ["rock", "paper", "scissors"];
         return choiceArray[Math.floor(choiceArray.length * Math.random())];
       }
-      //Assess if the player selection beats the computer using and if, elseif, else framework while being case-insensitive//
+      //Assess if the player selection beats the computer using if, elseif, else framework while being case-insensitive//
+
       function playRound(playerSelection, computerSelection) {
         if (playerSelection === computerSelection) {
           console.log("It's a tie!");
