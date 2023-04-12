@@ -12,7 +12,7 @@
         const choiceArray = ["rock", "paper", "scissors"];
 
         for (let i = 0; i < totalRounds; i++) {
-          const playerSelection = prompt("Rock, paper, or scissors?").toLowerCase();
+          const playerSelection = String(prompt("Rock, paper, or scissors?")).toLowerCase();
           const computerSelection = choiceArray[Math.floor(Math.random() * choiceArray.length)];
 
           if (playerSelection === computerSelection) {
