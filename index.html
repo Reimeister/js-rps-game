@@ -16,19 +16,39 @@
           const computerSelection = choiceArray[Math.floor(Math.random() * choiceArray.length)];
 
           if (playerSelection === computerSelection) {
-            alert("It's a tie!");
+            alert(
+              "Player chose " +
+                playerSelection +
+                "\nComputer chose " +
+                computerSelection +
+                "\nIt's a tie!"
+            );
           } else if (
             (playerSelection === "rock" && computerSelection === "scissors") ||
             (playerSelection === "paper" && computerSelection === "rock") ||
             (playerSelection === "scissors" && computerSelection === "paper")
           ) {
-            alert("Congratulations, you're a winner!"), playerScore++;
+            alert(
+              "Player chose " +
+                playerSelection +
+                "\nComputer chose " +
+                computerSelection +
+                "\nYou won this round!"
+            ),
+              playerScore++;
           } else if (
             (playerSelection === "scissors" && computerSelection === "rock") ||
             (playerSelection === "rock" && computerSelection === "paper") ||
             (playerSelection === "paper" && computerSelection === "scissors")
           ) {
-            alert("Sorry! You lost!"), computerScore++;
+            alert(
+              "Player chose " +
+                playerSelection +
+                "\nComputer chose " +
+                computerSelection +
+                "\nYou lose this round!"
+            ),
+              computerScore++;
           } else {
             alert("Invalid entry! Please enter 'Rock', 'Paper', or 'Scissors'");
           }
