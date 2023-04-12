@@ -16,36 +16,35 @@
           const computerSelection = choiceArray[Math.floor(Math.random() * choiceArray.length)];
 
           if (playerSelection === computerSelection) {
-            console.log("It's a tie!");
+            alert("It's a tie!");
           } else if (
             (playerSelection === "rock" && computerSelection === "scissors") ||
             (playerSelection === "paper" && computerSelection === "rock") ||
             (playerSelection === "scissors" && computerSelection === "paper")
           ) {
-            console.log("Congratulations, you're a winner!"), playerScore++;
+            alert("Congratulations, you're a winner!"), playerScore++;
           } else if (
             (playerSelection === "scissors" && computerSelection === "rock") ||
             (playerSelection === "rock" && computerSelection === "paper") ||
             (playerSelection === "paper" && computerSelection === "scissors")
           ) {
-            console.log("Sorry! You lost!"), computerScore++;
+            alert("Sorry! You lost!"), computerScore++;
           } else {
-            console.log("Invalid entry! Please enter 'Rock', 'Paper', or 'Scissors'");
+            alert("Invalid entry! Please enter 'Rock', 'Paper', or 'Scissors'");
           }
-          console.log(playerScore, computerScore);
         }
 
-        console.log(`Final score: You - ${playerScore} vs. Computer - ${computerScore}`);
+        alert(`Final score: You - ${playerScore} vs. Computer - ${computerScore}`);
 
         if (playerScore > computerScore) {
-          console.log("You're a winner!");
+          alert("You're a winner!");
         } else if (playerScore < computerScore) {
-          console.log("You've lost bub!");
+          alert("You've lost bub!");
         } else {
-          console.log("It's a tie! Give it another go!");
+          alert("It's a tie! Give it another go!");
         }
       }
-      playGame(5);
+      playGame(prompt("How many rounds?"));
     </script>
   </body>
 </html>
