@@ -2,69 +2,88 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" /
-    <title>Rock, Paper, Scissors</title>
+    <title></title>
   </head>
   <body>
+    <h1>Try and beat the computer in Rock, Paper, Scissors!</h1>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div id="scorePlaceholder"></div>
     <script>
-      function playGame(totalRounds) {
-        let playerScore = 0;
-        let computerScore = 0;
+      const scorePlaceholder = document.querySelector(`#scorePlaceholder`);
+      const decisions = document.createElement("div");
+      const results = document.createElement("div");
+      const finalResult = document.createElement("div");
+      const rockButton = document.querySelector("#rock");
+      const paperButton = document.querySelector("#paper");
+      const scissorsButton = document.querySelector("#scissors");
+      let playerClicked = "";
+      let playerScore = 0;
+      let computerScore = 0;
+
+      let getRandomChoice = () => {
         const choiceArray = ["rock", "paper", "scissors"];
+        return choiceArray[Math.floor(Math.random() * choiceArray.length)];
+      };
 
-        for (let i = 0; i < totalRounds; i++) {
-          const playerSelection = String(prompt("Rock, paper, or scissors?")).toLowerCase();
-          const computerSelection = choiceArray[Math.floor(Math.random() * choiceArray.length)];
+      let playerSelection = rock.addEventListener("click", function () {
+        playRound("rock", getRandomChoice());
+      });
 
+      paper.addEventListener("click", function () {
+        playRound("paper", getRandomChoice());
+      });
+
+      scissors.addEventListener("click", function () {
+        playRound("scissors", getRandomChoice());
+      });
+
+      let computerSelection = getRandomChoice();
+
+      function playRound(playerSelection, computerSelection) {
+        if (playerScore < 5 && computerScore < 5) {
           if (playerSelection === computerSelection) {
-            alert(
-              "Player chose " +
-                playerSelection +
-                "\nComputer chose " +
-                computerSelection +
-                "\nIt's a tie!"
-            );
+            decisions.textContent =
+              "Player chose " + playerSelection + "\nComputer chose " + computerSelection;
+            results.textContent = `\nIt's a tie!\nYou - ${playerScore} vs. Computer - ${computerScore}`;
+            scorePlaceholder.appendChild(decisions);
+            scorePlaceholder.appendChild(results);
           } else if (
             (playerSelection === "rock" && computerSelection === "scissors") ||
             (playerSelection === "paper" && computerSelection === "rock") ||
             (playerSelection === "scissors" && computerSelection === "paper")
           ) {
-            alert(
-              "Player chose " +
-                playerSelection +
-                "\nComputer chose " +
-                computerSelection +
-                "\nYou won this round!"
-            ),
-              playerScore++;
+            decisions.textContent =
+              "Player chose " + playerSelection + "\nComputer chose " + computerSelection;
+            playerScore++;
+            results.textContent = `\nYou won this round!\nYou - ${playerScore} vs. Computer - ${computerScore}`;
+            scorePlaceholder.appendChild(decisions);
+            scorePlaceholder.append(results);
+            if (playerScore === 5) {
+              finalResult.textContent = "You're a winner! Please refresh to start again.";
+              scorePlaceholder.appendChild(finalResult);
+            }
           } else if (
             (playerSelection === "scissors" && computerSelection === "rock") ||
             (playerSelection === "rock" && computerSelection === "paper") ||
             (playerSelection === "paper" && computerSelection === "scissors")
           ) {
-            alert(
-              "Player chose " +
-                playerSelection +
-                "\nComputer chose " +
-                computerSelection +
-                "\nYou lose this round!"
-            ),
-              computerScore++;
+            decisions.textContent =
+              "Player chose " + playerSelection + "\nComputer chose " + computerSelection;
+            computerScore++;
+            results.textContent = `\nYou lose this round!\nYou - ${playerScore} vs. Computer - ${computerScore}`;
+            scorePlaceholder.appendChild(decisions);
+            scorePlaceholder.append(results);
+            if (computerScore === 5) {
+              finalResult.textContent = "You've lost bub! Please refresh to start again.";
+              scorePlaceholder.appendChild(finalResult);
+            }
           } else {
             alert("Invalid entry! Please enter 'Rock', 'Paper', or 'Scissors'");
           }
         }
-
-        alert(`Final score: You - ${playerScore} vs. Computer - ${computerScore}`);
-
-        if (playerScore > computerScore) {
-          alert("You're a winner!");
-        } else if (playerScore < computerScore) {
-          alert("You've lost bub!");
-        } else {
-          alert("It's a tie! Give it another go!");
-        }
       }
-      playGame(prompt("How many rounds?"));
     </script>
   </body>
 </html>
