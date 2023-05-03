@@ -46,7 +46,10 @@
         if (playerScore < 5 && computerScore < 5) {
           if (playerSelection === computerSelection) {
             decisions.textContent =
-              "Player chose " + playerSelection + "\nComputer chose " + computerSelection;
+              "Player chose " +
+              playerSelection +
+              "\nComputer chose " +
+              computerSelection;
             results.textContent = `\nIt's a tie!\nYou - ${playerScore} vs. Computer - ${computerScore}`;
             scorePlaceholder.appendChild(decisions);
             scorePlaceholder.appendChild(results);
@@ -56,13 +59,17 @@
             (playerSelection === "scissors" && computerSelection === "paper")
           ) {
             decisions.textContent =
-              "Player chose " + playerSelection + "\nComputer chose " + computerSelection;
+              "Player chose " +
+              playerSelection +
+              "\nComputer chose " +
+              computerSelection;
             playerScore++;
             results.textContent = `\nYou won this round!\nYou - ${playerScore} vs. Computer - ${computerScore}`;
             scorePlaceholder.appendChild(decisions);
             scorePlaceholder.append(results);
             if (playerScore === 5) {
-              finalResult.textContent = "You're a winner! Please refresh to start again.";
+              finalResult.textContent =
+                "You're a winner! Please refresh to start again.";
               scorePlaceholder.appendChild(finalResult);
             }
           } else if (
@@ -71,17 +78,23 @@
             (playerSelection === "paper" && computerSelection === "scissors")
           ) {
             decisions.textContent =
-              "Player chose " + playerSelection + "\nComputer chose " + computerSelection;
+              "Player chose " +
+              playerSelection +
+              "\nComputer chose " +
+              computerSelection;
             computerScore++;
             results.textContent = `\nYou lose this round!\nYou - ${playerScore} vs. Computer - ${computerScore}`;
             scorePlaceholder.appendChild(decisions);
             scorePlaceholder.append(results);
             if (computerScore === 5) {
-              finalResult.textContent = "You've lost bub! Please refresh to start again.";
+              finalResult.textContent =
+                "You've lost bub! Please refresh to start again.";
               scorePlaceholder.appendChild(finalResult);
             }
           } else {
-            alert("Invalid entry! Please enter 'Rock', 'Paper', or 'Scissors'");
+            alert(
+              "Invalid entry bub! Please enter 'Rock', 'Paper', or 'Scissors'"
+            );
           }
         }
       }
